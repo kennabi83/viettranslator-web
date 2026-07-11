@@ -150,6 +150,9 @@ dialog.modal::backdrop{background:rgba(6,10,18,.55); backdrop-filter:blur(3px)}
 .faq .ans a{color:var(--accent-ink)}
 
 .band{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); display:flex; gap:24px; align-items:center; flex-wrap:wrap; margin-top:8px}
+.band-cta{display:flex; flex-direction:column; align-items:center; gap:8px}
+.btn.is-disabled{opacity:.4; cursor:not-allowed; pointer-events:none; box-shadow:none}
+.tag-soon{font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--gold); background:color-mix(in srgb,var(--gold) 15%,transparent); border:1px solid color-mix(in srgb,var(--gold) 38%,transparent); padding:3px 10px; border-radius:999px}
 .band .txt{flex:1 1 320px}
 .band h3{font-size:20px; margin-bottom:8px}
 .band p{color:var(--muted); font-size:15.5px}
@@ -315,7 +318,10 @@ footer a{color:var(--muted)}
     <div class="band">
       <div class="txt"><h3>Góp một tay cho bản dịch</h3>
         <p>Tool duyệt cho phép đọc song ngữ từng câu, sửa lời và đánh dấu đã duyệt. Tài khoản do quản trị cấp.</p></div>
-      <a class="btn btn-primary" href="https://viettranslator-review.onrender.com">Mở tool duyệt dịch →</a>
+      <div class="band-cta">
+        <span class="tag-soon">Sắp có</span>
+        <span class="btn btn-primary is-disabled" aria-disabled="true">Mở tool duyệt dịch →</span>
+      </div>
     </div>
   </div>
 </section>
@@ -466,7 +472,10 @@ footer a{color:var(--muted)}
     <div class="band">
       <div class="txt"><h3>Lend a hand with the translation</h3>
         <p>The review tool lets you read each line bilingually, edit the wording, and mark it reviewed. Accounts are granted by an admin.</p></div>
-      <a class="btn btn-primary" href="https://viettranslator-review.onrender.com">Open review tool →</a>
+      <div class="band-cta">
+        <span class="tag-soon">Coming soon</span>
+        <span class="btn btn-primary is-disabled" aria-disabled="true">Open review tool →</span>
+      </div>
     </div>
   </div>
 </section>
