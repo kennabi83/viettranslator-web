@@ -60,6 +60,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-of
 code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.86em}
 kbd{background:var(--surface-2); border:1px solid var(--line); border-bottom-width:2px; border-radius:6px; padding:1px 7px; color:var(--ink); white-space:nowrap}
 
+/* ---- carousel ảnh chụp ---- */
+.shots{position:relative; margin-top:26px}
+.sh-track{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory;
+  list-style:none; margin:0; padding:0 0 6px;
+  scrollbar-width:none; -ms-overflow-style:none}
+.sh-track::-webkit-scrollbar{display:none}
+.sh-item{flex:0 0 100%; scroll-snap-align:center; min-width:0}
+.sh-item figure{margin:0}
+.sh-item img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover;
+  border-radius:14px; border:1px solid var(--line); background:var(--surface-2)}
+.sh-item figcaption{margin-top:12px; color:var(--muted); font-size:14.5px; line-height:1.6}
+.sh-arrow{position:absolute; top:calc(50% - 34px); transform:translateY(-50%); z-index:2;
+  width:44px; height:44px; border-radius:999px; cursor:pointer; font-size:26px; line-height:1;
+  display:grid; place-items:center; color:var(--ink); border:1px solid var(--line);
+  background:color-mix(in srgb,var(--surface) 88%,transparent); backdrop-filter:blur(6px);
+  box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.sh-arrow:hover{background:var(--surface); border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.sh-arrow[disabled]{opacity:.32; cursor:default}
+.sh-prev{left:-8px} .sh-next{right:-8px}
+.sh-dots{display:flex; gap:9px; justify-content:center; margin-top:20px}
+.sh-dots button{width:8px; height:8px; padding:0; border-radius:999px; cursor:pointer;
+  border:0; background:var(--line)}
+.sh-dots button[aria-selected="true"]{background:var(--accent); width:24px}
+@media (max-width:820px){
+  .sh-arrow{display:none}
+  .sh-item figcaption{font-size:13.5px}
+}
 header.top{position:sticky; top:0; z-index:5; backdrop-filter:blur(10px); background:color-mix(in srgb,var(--bg) 82%,transparent); border-bottom:1px solid var(--line)}
 .top .wrap{display:flex; align-items:center; gap:16px; height:60px}
 .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em}
@@ -236,6 +263,33 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<section id="anhchup-vi">
+  <div class="wrap">
+    <p class="eyebrow">Ảnh chụp</p>
+    <h2>Trong game trông như thế nào.</h2>
+    <p class="lead">Ảnh chụp thật từ bản mới nhất. Không chỉnh sửa gì ngoài việc cắt cúp khung hình.</p>
+    <div class="shots">
+      <button class="sh-arrow sh-prev" type="button" aria-label="Ảnh trước">&#8249;</button>
+      <ul class="sh-track">
+        <li class="sh-item"><figure>
+          <img src="images/shot1.jpg" width="1400" height="788" loading="lazy" decoding="async" alt="Hộp thoại NPC trong game hiển thị phụ đề tiếng Việt">
+          <figcaption>Hộp thoại NPC — lớp phụ đề tiếng Việt phủ lên hộp gốc của game, giữ nguyên tên riêng như Lotus Stand hay Elder Seedseer.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot2.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Cutscene có phụ đề tiếng Việt nằm trên câu tiếng Anh gốc">
+          <figcaption>Trong cutscene, bản dịch nằm ngay trên câu gốc — muốn đối chiếu lúc nào cũng được.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot3.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Câu thoại dài trong cutscene, phụ đề tiếng Việt xuống dòng gọn gàng">
+          <figcaption>Câu dài tự xuống dòng gọn gàng, dấu tiếng Việt hiện đủ nét nhờ font đi kèm.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot4.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Kan-E-Senna nói chuyện, phụ đề tiếng Việt phía dưới">
+          <figcaption>Kan-E-Senna nói giọng trang nghiêm — mỗi nhân vật một cách xưng hô riêng, không dịch đều đều như máy.</figcaption></figure></li>
+      </ul>
+      <button class="sh-arrow sh-next" type="button" aria-label="Ảnh sau">&#8250;</button>
+    </div>
+    <div class="sh-dots" role="tablist" aria-label="Trong game trông như thế nào."></div>
+  </div>
+</section>
+
 <section id="caidat-vi">
   <div class="wrap">
     <p class="eyebrow">Cài đặt</p>
@@ -390,6 +444,33 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<section id="anhchup-en">
+  <div class="wrap">
+    <p class="eyebrow">Screenshots</p>
+    <h2>What it looks like in game.</h2>
+    <p class="lead">Real captures from the latest build. Untouched apart from cropping the frame.</p>
+    <div class="shots">
+      <button class="sh-arrow sh-prev" type="button" aria-label="Previous">&#8249;</button>
+      <ul class="sh-track">
+        <li class="sh-item"><figure>
+          <img src="images/shot1.jpg" width="1400" height="788" loading="lazy" decoding="async" alt="An in-game NPC dialogue box with Vietnamese subtitles">
+          <figcaption>An NPC dialogue box — the Vietnamese layer sits over the game's own, keeping proper nouns such as Lotus Stand and Elder Seedseer in English.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot2.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="A cutscene with the Vietnamese line above the original English">
+          <figcaption>In cutscenes the translation appears directly above the original line, so you can compare at a glance.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot3.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="A long cutscene line wrapping cleanly in Vietnamese">
+          <figcaption>Long lines wrap cleanly, and every Vietnamese diacritic renders in full thanks to the bundled font.</figcaption></figure></li>
+        <li class="sh-item"><figure>
+          <img src="images/shot4.jpg" width="1400" height="787" loading="lazy" decoding="async" alt="Kan-E-Senna speaking, with Vietnamese subtitles below">
+          <figcaption>Kan-E-Senna speaks in a formal register — each character has their own voice and forms of address, never a flat machine rendering.</figcaption></figure></li>
+      </ul>
+      <button class="sh-arrow sh-next" type="button" aria-label="Next">&#8250;</button>
+    </div>
+    <div class="sh-dots" role="tablist" aria-label="What it looks like in game."></div>
+  </div>
+</section>
+
 <section id="caidat-en">
   <div class="wrap">
     <p class="eyebrow">Installation</p>
@@ -506,6 +587,46 @@ footer a{color:var(--muted)}
       var o=b.textContent; b.textContent=b.dataset.done||'✓';
       setTimeout(function(){b.textContent=o;},1400);
     });
+  });
+  document.querySelectorAll('.shots').forEach(function(sh){
+    var track=sh.querySelector('.sh-track');
+    var items=[].slice.call(sh.querySelectorAll('.sh-item'));
+    var prev=sh.querySelector('.sh-prev'), next=sh.querySelector('.sh-next');
+    var dots=sh.parentNode.querySelector('.sh-dots');
+    if(!track||!items.length) return;
+    items.forEach(function(_,i){
+      var d=document.createElement('button');
+      d.type='button'; d.setAttribute('role','tab');
+      d.setAttribute('aria-label', String(i+1));
+      d.addEventListener('click', function(){ go(i); });
+      dots.appendChild(d);
+    });
+    function cur(){
+      var mid=track.scrollLeft + track.clientWidth/2, best=0, bd=Infinity;
+      items.forEach(function(it,i){
+        var c=it.offsetLeft + it.offsetWidth/2, d=Math.abs(c-mid);
+        if(d<bd){ bd=d; best=i; }
+      });
+      return best;
+    }
+    function go(i){
+      i=Math.max(0,Math.min(items.length-1,i));
+      // Chuyển slide TỨC THÌ, không dùng behavior:'smooth': smooth đánh nhau với
+      // scroll-snap mandatory, có môi trường animation bị hủy giữa chừng và track đứng im.
+      items[i].scrollIntoView({inline:'center', block:'nearest'});
+    }
+    function sync(){
+      var i=cur();
+      [].forEach.call(dots.children, function(d,j){
+        d.setAttribute('aria-selected', j===i ? 'true':'false');
+      });
+      if(prev) prev.disabled = (i===0);
+      if(next) next.disabled = (i===items.length-1);
+    }
+    if(prev) prev.addEventListener('click', function(){ go(cur()-1); });
+    if(next) next.addEventListener('click', function(){ go(cur()+1); });
+    var t; track.addEventListener('scroll', function(){ clearTimeout(t); t=setTimeout(sync,90); });
+    sync();
   });
   document.querySelectorAll('.app').forEach(function(app){
     var m=app.querySelector('.historyModal');
