@@ -105,10 +105,13 @@ span.mark{background:linear-gradient(135deg,var(--accent),var(--gold)); box-shad
 
 /* Chuyển ngôn ngữ */
 .langsw{display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden; flex:none}
-.langsw button{font:inherit; font-size:13px; font-weight:600; padding:6px 11px; border:0; background:transparent; color:var(--muted); cursor:pointer; line-height:1.4}
+.langsw button{font:inherit; font-size:13px; font-weight:600; padding:6px 10px; border:0; background:transparent; color:var(--muted); cursor:pointer; line-height:1.4}
 .langsw button+button{border-left:1px solid var(--line)}
 .langsw button[aria-pressed="true"]{background:var(--accent-soft); color:var(--accent-ink)}
 .langsw button:hover{color:var(--ink)}
+
+
+/* Tiếng Gấu 🐻 — bản dựng từ trang EN ngay trong trình duyệt, xem script cuối trang (không cần CSS riêng) */
 
 .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
 .hero::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
@@ -194,6 +197,18 @@ dialog.modal::backdrop{background:rgba(6,10,18,.55); backdrop-filter:blur(3px)}
 .btn-dc .dc-ico{flex:none}
 .top nav a.btn-dc{color:#fff; padding:8px 14px; border-radius:9px; font-size:14px}
 .top nav a.btn-dc:hover{color:#fff}
+/* Đầu trang co theo khổ — đặt SAU luật gốc của .btn-dc thì mới đè được padding/cỡ chữ */
+@media (max-width:1000px){.top nav{gap:14px}}
+/* Khổ điện thoại: thêm nút 🐻 làm header rộng thêm ~34px → thu khoảng cách và padding cho vừa 360px */
+@media (max-width:640px){.top .wrap{gap:10px} .top nav{gap:8px} .langsw button{padding:6px 7px} .top nav a.btn-dc{padding:8px 10px}}
+@media (max-width:420px){.top .wrap{gap:8px} .top nav{gap:6px} .langsw button{padding:5px 6px; font-size:12px} .top nav a.btn-dc{padding:7px 9px; font-size:13px; gap:6px}}
+/* Chữ trên đầu trang không bao giờ bẻ dòng (trước đây nút Discord bẻ 3 dòng, link bẻ 2 dòng);
+   thiếu chỗ thì rút theo bậc: nhãn Discord ngắn → ẩn 4 link (trả lại nhãn đủ) → nhãn ngắn → chỉ còn icon */
+.top nav a{white-space:nowrap}
+@media (max-width:1060px){.top .dc-long{display:none}}
+@media (max-width:920px){.top nav a.hide-sm{display:none} .top .dc-long{display:inline}}
+@media (max-width:560px){.top .dc-long{display:none}}
+@media (max-width:359px){.top nav a.btn-dc{font-size:0; gap:0}}
 .dc-band{background:linear-gradient(135deg,color-mix(in srgb,#5865f2 16%,var(--surface)),var(--surface));
   border:1px solid color-mix(in srgb,#5865f2 30%,var(--line)); border-radius:var(--radius);
   padding:32px; box-shadow:var(--shadow); display:flex; gap:24px; align-items:center; flex-wrap:wrap}
@@ -224,10 +239,11 @@ footer a{color:var(--muted)}
       <a class="hide-sm" href="#phienban-vi">Phiên bản</a>
       <a class="hide-sm" href="https://viettranslator-review.onrender.com">Tool duyệt dịch</a>
       <a class="hide-sm nav-fb" href="https://www.facebook.com/viettranslatorXIV/" target="_blank" rel="noopener"><svg class="fb-ico" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Fanpage</a>
-      <a class="btn btn-dc" href="https://discord.gg/fFR92FHV6Y" target="_blank" rel="noopener"><svg class="dc-ico" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>Tham gia Việt Translator</a>
+      <a class="btn btn-dc" href="https://discord.gg/fFR92FHV6Y" target="_blank" rel="noopener"><svg class="dc-ico" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>Tham gia<span class="dc-long"> Việt Translator</span></a>
       <span class="langsw" role="group" aria-label="Language">
         <button type="button" data-setlang="vi">VI</button>
         <button type="button" data-setlang="en">EN</button>
+        <button type="button" data-setlang="bear" title="Tiếng Gấu · Bear" aria-label="Tiếng Gấu (Bear)">🐻</button>
       </span>
     </nav>
   </div>
@@ -405,10 +421,11 @@ footer a{color:var(--muted)}
       <a class="hide-sm" href="#phienban-en">Version</a>
       <a class="hide-sm" href="https://viettranslator-review.onrender.com">Review tool</a>
       <a class="hide-sm nav-fb" href="https://www.facebook.com/viettranslatorXIV/" target="_blank" rel="noopener"><svg class="fb-ico" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Fanpage</a>
-      <a class="btn btn-dc" href="https://discord.gg/fFR92FHV6Y" target="_blank" rel="noopener"><svg class="dc-ico" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>Join Viet Translator</a>
+      <a class="btn btn-dc" href="https://discord.gg/fFR92FHV6Y" target="_blank" rel="noopener"><svg class="dc-ico" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>Join<span class="dc-long"> Viet Translator</span></a>
       <span class="langsw" role="group" aria-label="Language">
         <button type="button" data-setlang="vi">VI</button>
         <button type="button" data-setlang="en">EN</button>
+        <button type="button" data-setlang="bear" title="Tiếng Gấu · Bear" aria-label="Tiếng Gấu (Bear)">🐻</button>
       </span>
     </nav>
   </div>
@@ -579,6 +596,74 @@ footer a{color:var(--muted)}
 </dialog>
 </div>
 <script>
+  // ---- Tiếng Gấu 🐻 ----
+  // Nhân bản trang EN rồi dịch từng chữ sang tiếng gấu. Chạy TRƯỚC các đoạn gắn sự kiện
+  // bên dưới (copy, carousel, modal) để bản gấu cũng được gắn như hai bản kia.
+  // Tâm trạng câu quyết định loại tiếng: "!" gầm, "?" khịt mũi, "…" rên, còn lại càu nhàu.
+  // Cùng một chữ luôn ra cùng một tiếng (băm chữ → chọn trong kho), nên đọc như một thứ tiếng.
+  (function(){
+    var en=document.querySelector('.app[data-lang="en"]'); if(!en) return;
+    var bear=en.cloneNode(true); bear.dataset.lang='bear'; bear.hidden=true;
+    bear.querySelectorAll('[id]').forEach(function(el){ el.id=el.id.replace(/-en$/,'-bear'); });
+    bear.querySelectorAll('a[href^="#"]').forEach(function(a){ a.setAttribute('href', a.getAttribute('href').replace(/-en$/,'-bear')); });
+    var POOL={
+      roar:['gr*r','roa*r','sna*rl','hoo*-arrgh','wu*f','raw*r','gro*wl'],
+      ask: ['hu*ff','sno*rt','sni*ff','hm*','pff*t'],
+      sad: ['whi*mper','whi*ne','we*e','wha*a','hm*'],
+      calm:['chu*ff','gru*mph','pu*ff','mm*','hu*m','u*gh','no*m','bru*m','hmp*f']
+    };
+    var SHORT=['gr','uf','hm','rr','wa','mm'];
+    var SPECIAL={viet:'Bear',vietnamese:'Bearnamese',english:'Humanese',translator:'Grrranslator',bear:'BEAR',honey:'HONEY'};
+    var KEEP=/^(ffxiv|xiv|dalamud|discord|github|final|fantasy)$/i;
+    function hash(s){ var x=5381; for(var i=0;i<s.length;i++) x=((x<<5)+x+s.charCodeAt(i))|0; return Math.abs(x); }
+    // "gr*r": ký tự đứng trước * được kéo dài theo độ dài chữ gốc (một nửa phần dư, tối đa +4)
+    function grow(t,n){
+      var k=t.indexOf('*'), base=t.replace('*','');
+      if(k<0) return base;
+      var extra=Math.max(0,Math.min(4,Math.round((n-base.length)/2)));
+      return base.slice(0,k)+new Array(extra+1).join(base.charAt(k-1))+base.slice(k);
+    }
+    function word(w,mood,shout){
+      if(KEEP.test(w)) return w;
+      var lw=w.toLowerCase(), out=SPECIAL[lw];
+      if(!out){ var pool=w.length<=2?SHORT:POOL[mood]; out=grow(pool[hash(lw)%pool.length], w.length); }
+      var up=function(c){ return c!==c.toLowerCase(); };
+      if(shout || (w.length>1 && w===w.toUpperCase() && up(w.charAt(0)))) return out.toUpperCase();
+      if(up(w.charAt(0))) return out.charAt(0).toUpperCase()+out.slice(1);
+      return out;
+    }
+    function text(s,forced,shout){
+      return s.replace(/[^.!?…]+[.!?…]*/g, function(seg){
+        var end=(seg.match(/[.!?…]+\s*$/)||[''])[0];
+        var mood=forced || (end.indexOf('!')>=0?'roar' : end.indexOf('?')>=0?'ask' : (end.indexOf('…')>=0||end.indexOf('..')>=0)?'sad' : 'calm');
+        return seg.replace(/[A-Za-zÀ-ỹ][A-Za-zÀ-ỹ’']*/g, function(w){ return word(w,mood,shout); });
+      });
+    }
+    var SKIP='code,pre,kbd,script,style,svg,.langsw';
+    var tw=document.createTreeWalker(bear, NodeFilter.SHOW_TEXT, null), nodes=[];
+    while(tw.nextNode()) nodes.push(tw.currentNode);
+    nodes.forEach(function(n){
+      var p=n.parentElement;
+      if(!p || p.closest(SKIP) || !/[A-Za-z]/.test(n.nodeValue)) return;
+      n.nodeValue=text(n.nodeValue, p.closest('h1,h2,h3,summary,.vtitle')?'roar':null, !!p.closest('h1'));
+    });
+    // Mục nav chỉ giữ MỘT tiếng gấu ngắn, không kéo dài: chữ gấu dài hơn chữ Anh, để nguyên là tràn header.
+    bear.querySelectorAll('.top nav a').forEach(function(a){
+      a.querySelectorAll('.dc-long').forEach(function(s){ s.remove(); });
+      [].forEach.call(a.childNodes, function(n){
+        if(n.nodeType===3 && /[A-Za-z]/.test(n.nodeValue)){
+          var w=(n.nodeValue.match(/[A-Za-z]+/)||['gr'])[0], s=SHORT.concat(['chuff','huff','grumph','wuf']);
+          var o=s[hash(w.toLowerCase())%s.length]; n.nodeValue=o.charAt(0).toUpperCase()+o.slice(1);
+        }
+      });
+    });
+    bear.querySelectorAll('[alt],[title],[aria-label]').forEach(function(el){
+      if(el.closest('.langsw')) return;
+      ['alt','title','aria-label'].forEach(function(k){ if(el.hasAttribute(k)) el.setAttribute(k, text(el.getAttribute(k))); });
+    });
+    bear.querySelectorAll('[data-done]').forEach(function(el){ el.dataset.done='Chuff!'; });
+    en.parentNode.insertBefore(bear, en.nextSibling);
+  })();
   document.querySelectorAll('.copy').forEach(function(b){
     b.addEventListener('click', function(){
       var box=b.closest('.repobox'); var code=box&&box.querySelector('code');
@@ -636,17 +721,18 @@ footer a{color:var(--muted)}
     if(m) m.addEventListener('click', function(e){ if(e.target===m) m.close(); });
   });
   (function(){
-    var KEY='vtl-lang';
+    var KEY='vtl-lang', TITLE=document.title;
     function apply(lang){
       document.querySelectorAll('.app').forEach(function(a){ a.hidden = (a.dataset.lang!==lang); });
       document.querySelectorAll('[data-setlang]').forEach(function(b){
         b.setAttribute('aria-pressed', b.dataset.setlang===lang ? 'true' : 'false');
       });
-      document.documentElement.lang=lang;
+      document.documentElement.lang = lang==='bear' ? 'en' : lang;
+      document.title = lang==='bear' ? 'Bear Grrranslator 🐻 — ROAAARRR FFXIV' : TITLE;
       try{ localStorage.setItem(KEY,lang); }catch(e){}
     }
     var saved='vi'; try{ saved=localStorage.getItem(KEY)||'vi'; }catch(e){}
-    apply(saved==='en'?'en':'vi');
+    apply(saved==='en'||saved==='bear' ? saved : 'vi');
     document.querySelectorAll('[data-setlang]').forEach(function(b){
       b.addEventListener('click', function(){ apply(b.dataset.setlang); });
     });
